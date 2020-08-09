@@ -1,0 +1,486 @@
+{
+	"info": {
+		"_postman_id": "ec942a1d-c6bb-40da-933d-28e4684eaf74",
+		"name": "test-wpdev",
+		"description": "For server:\nhttps://us.cwcloudtest.com/test-wpdev",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b9aae7a8-8f2a-49ec-8ae4-702b1030064a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var machineID = pm.response.json().d.result.MachineID;",
+							"pm.environment.set(\"wpdev_machineid\", machineID);",
+							"",
+							"var uuid = pm.response.json().d.result.UUID;",
+							"pm.environment.set(\"wpdev_uuid\", uuid);",
+							"",
+							"pm.test(\"A proper machineID was returned\", function(){",
+							"    pm.expect(pm.response.json().d.result.MachineID).to.have.lengthOf(36);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Host",
+						"value": " us.cwcloudtest.com",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": " Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": " */*",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": " en-US,en;q=0.5",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": " gzip, deflate, br",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": " https://us.cwcloudtest.com/test-wpdev/webapps/",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Json-Omit-Nulls",
+						"value": " 1",
+						"type": "text"
+					},
+					{
+						"key": "Json-Serialize-Enum-As-String",
+						"value": " 1",
+						"type": "text"
+					},
+					{
+						"key": "Content-Length",
+						"value": " 1281",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": " keep-alive",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"LoginName\":\"admin@test.caseware.com\",\"Password\":\"stage!@#\",\"FirmName\":\"test-wpdev\",\"RememberMe\":true,\"ApplicationType\":\"Browser\",\"Language\":\"en\",\"TwoFactorAuthenticationCookie\":\"618dd46d-0f61-4958-b04f-475e0c339288\",\"TwoFactorAuthenticationClientSecret\":\"793BB83A-DADD-4FCD-AB38-9B51211D6509\",\"RetrieveList\":[{\"ObjectType\":\"LoginResult\",\"Fields\":[\"Products\",\"Terminology\",\"RegionalSettings\",\"UIModules\",\"CustomBundleTypes\",\"UserSettings\",\"AggregateRole\",\"PasswordExpirationDate\",\"CompanyName\",\"EnableGoogleViewer\",\"SelfHosted\",\"EnableSharePoint\",\"EnableSharePointOfficeWebApps\",\"TimeIntegrated\",\"IsMaster\",\"ItemWorkflowStages\",\"EntityWorkflowStages\",\"PersonWorkflowStages\",\"Image\",\"BackgroundColor\",\"PaymentType\",\"IsProductionFirm\",\"WorkingPapersTemplates\",\"AssignedObjectTypes\",\"CountryCode\",\"CountryPluginRegistrationUrl\",\"TwoFactorAuthenticationInfo\",\"EngagementTerminology\"]},{\"ObjectType\":\"Entity\",\"Fields\":[\"Name\",\"entityNo\",\"IsFirmEntity\",\"HasContacts\",\"EffectivePermissions\",\"OwnerType\",\"IsInAssociation\",\"Type\",\"Location\",\"EntitySubtypeId\",\"SharedSecurity\",\"EntityAssociationId\",\"Confidential\",\"IsSubscribed\",\"Subscriptions\"]},{\"ObjectType\":\"Person\",\"Fields\":[\"FirstName\",\"MiddleName\",\"LastName\",\"Admin\",\"Email\",\"OwnerType\",\"LdapFlag\",\"Initials\",\"IsSingleSignOnUser\"]}]}"
+				},
+				"url": {
+					"raw": "https://us.cwcloudtest.com/test-wpdev/CWCoreService/restricted/SessionService.svc/Login",
+					"protocol": "https",
+					"host": [
+						"us",
+						"cwcloudtest",
+						"com"
+					],
+					"path": [
+						"test-wpdev",
+						"CWCoreService",
+						"restricted",
+						"SessionService.svc",
+						"Login"
+					]
+				},
+				"description": "Login to test-wpdev"
+			},
+			"response": []
+		},
+		{
+			"name": "Entity GetList",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Host",
+						"value": " us.cwcloudtest.com",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": " Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": " */*",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": " en-US,en;q=0.5",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": " gzip, deflate, br",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Json-Omit-Nulls",
+						"value": " 1",
+						"type": "text"
+					},
+					{
+						"key": "Json-Serialize-Enum-As-String",
+						"value": " 1",
+						"type": "text"
+					},
+					{
+						"key": "Content-Length",
+						"value": " 748",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": " keep-alive",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": " https://us.cwcloudtest.com/test-wpdev/webapps/",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": " __username__=admin%40test.caseware.com; __machineid__={{wpdev_machineid}}; __offset__=4; _ga=GA1.1.513966954.1559579227; JSESSIONID=AA2703F651F4EC7382A0A9894DDD643B; _gid=GA1.1.1275167535.1562077770; _gat=1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"F\":{\"FilterBy\":{\"PredicateType\":\"Not\",\"RightPredicate\":{\"LeftExpression\":{\"FieldName\":\"Id\",\"Type\":\"BaseModel\",\"ExpressionType\":\"FilterField\"},\"CompareOpType\":\"eq\",\"PredicateType\":\"Compare\",\"RightExpression\":{\"LongValue\":43,\"ExpressionType\":\"FilterValue\"}}},\"SortBy\":[{\"Ascending\":false,\"Field\":{\"FieldName\":\"LastAccessedDate\",\"Type\":\"BaseModel\",\"ExpressionType\":\"FilterField\"}}],\"BatchStart\":0,\"BatchSize\":50,\"OmitTotal\":true,\"RetrieveList\":[{\"ObjectType\":\"Entity\",\"Fields\":[\"Name\",\"entityNo\",\"IsFirmEntity\",\"HasContacts\",\"EffectivePermissions\",\"OwnerType\",\"IsInAssociation\",\"Type\",\"Location\",\"EntitySubtypeId\",\"SharedSecurity\",\"EntityAssociationId\",\"Confidential\",\"IsSubscribed\",\"Subscriptions\"]}]},\"Uuid\":\"{{wpdev_uuid}}\"}"
+				},
+				"url": {
+					"raw": "https://us.cwcloudtest.com/test-wpdev/CWCoreService/restricted/EntityService.svc/GetList",
+					"protocol": "https",
+					"host": [
+						"us",
+						"cwcloudtest",
+						"com"
+					],
+					"path": [
+						"test-wpdev",
+						"CWCoreService",
+						"restricted",
+						"EntityService.svc",
+						"GetList"
+					]
+				},
+				"description": "This gets a list of entities.  \nAdjust batch start and batch size to get all entities"
+			},
+			"response": []
+		},
+		{
+			"name": "Entity Get List For Process",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Host",
+						"type": "text",
+						"value": " us.cwcloudtest.com"
+					},
+					{
+						"key": "User-Agent",
+						"type": "text",
+						"value": " Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": " */*"
+					},
+					{
+						"key": "Accept-Language",
+						"type": "text",
+						"value": " en-US,en;q=0.5"
+					},
+					{
+						"key": "Accept-Encoding",
+						"type": "text",
+						"value": " gzip, deflate, br"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Json-Omit-Nulls",
+						"type": "text",
+						"value": " 1"
+					},
+					{
+						"key": "Json-Serialize-Enum-As-String",
+						"type": "text",
+						"value": " 1"
+					},
+					{
+						"key": "Content-Length",
+						"type": "text",
+						"value": " 971"
+					},
+					{
+						"key": "Connection",
+						"type": "text",
+						"value": " keep-alive"
+					},
+					{
+						"key": "Referer",
+						"type": "text",
+						"value": " https://us.cwcloudtest.com/test-wpdev/webapps/"
+					},
+					{
+						"key": "Cookie",
+						"type": "text",
+						"value": " __machineid__={{wpdev_machineid}}; __username__=admin%40test.caseware.com; __offset__=4; _ga=GA1.1.513966954.1559579227; JSESSIONID=AA2703F651F4EC7382A0A9894DDD643B; _gid=GA1.1.1275167535.1562077770; _gat=1"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"F\":{\"FilterBy\":{\"CompositeOpType\":\"And\",\"PredicateType\":\"Composite\",\"LeftPredicate\":{\"LeftExpression\":{\"FieldName\":\"Type\",\"Type\":\"BaseModel\",\"ExpressionType\":\"FilterField\"},\"CompareOpType\":\"eq\",\"PredicateType\":\"Compare\",\"RightExpression\":{\"StringValue\":\"A\",\"ExpressionType\":\"FilterValue\"}},\"RightPredicate\":{\"PredicateType\":\"In\",\"Expression\":{\"FieldName\":\"EntityId\",\"Type\":\"BaseModel\",\"ExpressionType\":\"FilterField\"},\"List\":[{\"ExpressionType\":\"FilterValue\",\"LongValue\":43},{\"ExpressionType\":\"FilterValue\",\"LongValue\":72},{\"ExpressionType\":\"FilterValue\",\"LongValue\":42},{\"ExpressionType\":\"FilterValue\",\"LongValue\":12},{\"ExpressionType\":\"FilterValue\",\"LongValue\":39},{\"ExpressionType\":\"FilterValue\",\"LongValue\":5},{\"ExpressionType\":\"FilterValue\",\"LongValue\":1},{\"ExpressionType\":\"FilterValue\",\"LongValue\":14},{\"ExpressionType\":\"FilterValue\",\"LongValue\":50},{\"ExpressionType\":\"FilterValue\",\"LongValue\":4}]}},\"OmitTotal\":true},\"Uuid\":\"{{wpdev_uuid}}\"}"
+				},
+				"url": {
+					"raw": "https://us.cwcloudtest.com/test-wpdev/CWCoreService/restricted/EntityService.svc/GetListForProcess",
+					"protocol": "https",
+					"host": [
+						"us",
+						"cwcloudtest",
+						"com"
+					],
+					"path": [
+						"test-wpdev",
+						"CWCoreService",
+						"restricted",
+						"EntityService.svc",
+						"GetListForProcess"
+					]
+				},
+				"description": "This gets specific details given the entity ids in the List member of json body"
+			},
+			"response": []
+		},
+		{
+			"name": "Getlist for engagments",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Host",
+						"value": " us.cwcloudtest.com",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": " Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": " */*",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": " en-US,en;q=0.5",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": " gzip, deflate, br",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": " application/json; charset=utf-8",
+						"type": "text"
+					},
+					{
+						"key": "Json-Omit-Nulls",
+						"value": " 1",
+						"type": "text"
+					},
+					{
+						"key": "Json-Serialize-Enum-As-String",
+						"value": " 1",
+						"type": "text"
+					},
+					{
+						"key": "Content-Length",
+						"value": " 1114",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": " keep-alive",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": " https://us.cwcloudtest.com/test-wpdev/webapps/",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": " __username__=admin%40test.caseware.com; __machineid__=502c729c-6fd2-f675-51f4-4ce9c32b1cc6; __offset__=4; _ga=GA1.1.513966954.1559579227; JSESSIONID=7568DAFC09263A58A4F5F6988B46EEFA; _gid=GA1.1.1275167535.1562077770; _gat=1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"ReturnAll\":true,\"ReturnFolders\":false,\"FolderId\":-1,\"BundleId\":-1,\"NonFolderItemTypes\":\"Engagements\",\"F\":{\"FilterBy\":{\"LeftExpression\":{\"FieldName\":\"ItemType\",\"Type\":\"BaseModel\",\"ExpressionType\":\"FilterField\"},\"CompareOpType\":\"eq\",\"PredicateType\":\"Compare\",\"RightExpression\":{\"StringValue\":\"WorkingPapersBundle\",\"ExpressionType\":\"FilterValue\"}},\"EntityIds\":\"43\",\"IncludeAssociatedEntities\":false,\"RecycleStatus\":\"NonRecycled\",\"RetrieveList\":[{\"Fields\":[\"ItemType\",\"ContentType\",\"Confidential\",\"SubType\",\"EntityId\",\"Name\",\"CreatedById\",\"ModifiedById\",\"WorkflowStageName\",\"CWGuid\",\"RelatedPeople\",\"IsRead\",\"WorkflowStageDisplayColor\",\"ModifyDate\"],\"ObjectType\":\"Item\"},{\"ObjType\":\"ItemMetadataEntry\",\"Context\":\"dc6ad765-3510-42ba-a022-9c912323e1cc\",\"Fields\":[\"ClientName\",\"LastAccessed\",\"LastModified\",\"CreatedBy\",\"UserFriendlyFileVersion\"]}],\"BatchSize\":31,\"OmitTotal\":true,\"SortBy\":[{\"Field\":{\"FieldName\":\"StringValue\",\"Type\":\"Metadata\",\"ExpressionType\":\"FilterField\",\"ChildListKey\":\"ClientName\",\"Context\":\"dc6ad765-3510-42ba-a022-9c912323e1cc\"},\"Ascending\":true}]},\"Uuid\":\"0ee03a70-c53c-db0e-94b4-3eb3c65aea0d\"}"
+				},
+				"url": {
+					"raw": "https://us.cwcloudtest.com/test-wpdev/CWCoreService/restricted/ItemService.svc/GetList",
+					"protocol": "https",
+					"host": [
+						"us",
+						"cwcloudtest",
+						"com"
+					],
+					"path": [
+						"test-wpdev",
+						"CWCoreService",
+						"restricted",
+						"ItemService.svc",
+						"GetList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetList - WP file",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Host",
+						"value": " us.cwcloudtest.com",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": " Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": " */*",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": " en-US,en;q=0.5",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": " gzip, deflate, br",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Json-Omit-Nulls",
+						"value": " 1",
+						"type": "text"
+					},
+					{
+						"key": "Json-Serialize-Enum-As-String",
+						"value": " 1",
+						"type": "text"
+					},
+					{
+						"key": "Content-Length",
+						"value": " 1114",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": " keep-alive",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": " https://us.cwcloudtest.com/test-wpdev/webapps/",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": " __machineid__={{wpdev_machineid}}; __username__=admin%40test.caseware.com; __offset__=4; _ga=GA1.1.513966954.1559579227; JSESSIONID=FA86DB2689F41BB377AB2972104E02AE; _gid=GA1.1.1318484492.1562590368; _gat=1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"ReturnAll\":true,\"ReturnFolders\":false,\"FolderId\":-1,\"BundleId\":-1,\"NonFolderItemTypes\":\"Engagements\",\"F\":{\"FilterBy\":{\"LeftExpression\":{\"FieldName\":\"ItemType\",\"Type\":\"BaseModel\",\"ExpressionType\":\"FilterField\"},\"CompareOpType\":\"eq\",\"PredicateType\":\"Compare\",\"RightExpression\":{\"StringValue\":\"WorkingPapersBundle\",\"ExpressionType\":\"FilterValue\"}},\"EntityIds\":\"43\",\"IncludeAssociatedEntities\":false,\"RecycleStatus\":\"NonRecycled\",\"RetrieveList\":[{\"Fields\":[\"ItemType\",\"ContentType\",\"Confidential\",\"SubType\",\"EntityId\",\"Name\",\"CreatedById\",\"ModifiedById\",\"WorkflowStageName\",\"CWGuid\",\"RelatedPeople\",\"IsRead\",\"WorkflowStageDisplayColor\",\"ModifyDate\"],\"ObjectType\":\"Item\"},{\"ObjType\":\"ItemMetadataEntry\",\"Context\":\"dc6ad765-3510-42ba-a022-9c912323e1cc\",\"Fields\":[\"ClientName\",\"LastAccessed\",\"LastModified\",\"CreatedBy\",\"UserFriendlyFileVersion\"]}],\"BatchSize\":31,\"OmitTotal\":true,\"SortBy\":[{\"Field\":{\"FieldName\":\"StringValue\",\"Type\":\"Metadata\",\"ExpressionType\":\"FilterField\",\"ChildListKey\":\"ClientName\",\"Context\":\"dc6ad765-3510-42ba-a022-9c912323e1cc\"},\"Ascending\":true}]},\"Uuid\":\"{{wpdev_uuid}}\"}"
+				},
+				"url": {
+					"raw": "https://us.cwcloudtest.com/test-wpdev/CWCoreService/restricted/ItemService.svc/GetList",
+					"protocol": "https",
+					"host": [
+						"us",
+						"cwcloudtest",
+						"com"
+					],
+					"path": [
+						"test-wpdev",
+						"CWCoreService",
+						"restricted",
+						"ItemService.svc",
+						"GetList"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
